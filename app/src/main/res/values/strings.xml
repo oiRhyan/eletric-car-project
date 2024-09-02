@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">EletricCarApp</string>
+    <string name="preco">Preço:</string>
+    <string name="preco_value">200R$</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="title_carros">Carros</string>
+    <string name="bateria">Bateria:</string>
+    <string name="pot_ncia">Potência:</string>
+    <string name="recarga">Recarga:</string>
 </resources>
