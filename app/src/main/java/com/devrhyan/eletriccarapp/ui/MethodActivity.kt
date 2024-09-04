@@ -1,20 +1,21 @@
-package com.devrhyan.eletriccarapp
+package com.devrhyan.eletriccarapp.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.devrhyan.eletriccarapp.databinding.ActivityMainBinding
+import com.devrhyan.eletriccarapp.R
+import com.devrhyan.eletriccarapp.databinding.ActivityMethodBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
+class MethodActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivityMethodBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMethodBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -22,7 +23,8 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
+        binding.ivClose.setOnClickListener {
+            finish()
+        }
     }
-
 }

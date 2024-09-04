@@ -42,10 +42,10 @@
         app:layout_constraintTop_toTopOf="@id/car_title_fragment" />
 
     <ImageView
+        android:id="@+id/iv_car"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:id="@+id/iv_car"
         android:src="@drawable/carro_eletrico"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,93 +54,89 @@
         app:layout_constraintTop_toBottomOf="@id/car_title_fragment" />
 
     <TextView
+        android:id="@+id/tv_preco"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="16dp"
-        android:id="@+id/tv_preco"
         android:text="@string/preco"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@id/iv_car"
         app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintTop_toBottomOf="@id/iv_car" />
 
     <TextView
+        android:id="@+id/tv_preco_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_preco_value"
         android:text="@string/preco_value"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/tv_preco"
         app:layout_constraintStart_toEndOf="@id/tv_preco"
-        />
+        app:layout_constraintTop_toTopOf="@id/tv_preco" />
 
     <TextView
+        android:id="@+id/tv_bateria"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:id="@+id/tv_bateria"
         android:text="@string/bateria"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_preco"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_preco"
 
         />
 
     <TextView
+        android:id="@+id/tv_bateria_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_bateria_value"
         android:text="530WH"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/tv_bateria"
         app:layout_constraintStart_toEndOf="@id/tv_bateria"
-        />
+        app:layout_constraintTop_toTopOf="@id/tv_bateria" />
 
     <TextView
+        android:id="@+id/tv_potencia"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:id="@+id/tv_potencia"
         android:text="@string/pot_ncia"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_bateria"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_bateria" />
 
     <TextView
+        android:id="@+id/tv_potencia_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_potencia_value"
         android:text="500v"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/tv_potencia"
         app:layout_constraintStart_toEndOf="@id/tv_potencia"
-        />
+        app:layout_constraintTop_toTopOf="@id/tv_potencia" />
 
     <TextView
+        android:id="@+id/tv_recarga"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:id="@+id/tv_recarga"
         android:text="@string/recarga"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_potencia"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_potencia" />
 
     <TextView
+        android:id="@+id/tv_recarga_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_recarga_value"
         android:text="23min"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/tv_recarga"
         app:layout_constraintStart_toEndOf="@id/tv_recarga"
-        />
+        app:layout_constraintTop_toTopOf="@id/tv_recarga" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
