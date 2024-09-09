@@ -40,6 +40,7 @@ android {
 
 dependencies {
 
+    implementation(libs.androix.fragment)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
