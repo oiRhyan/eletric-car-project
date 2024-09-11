@@ -13,7 +13,7 @@ class CarAdapter : Adapter<CarAdapter.CarViewHolder>() {
 
     private var CarList : List<Car> = listOf();
 
-    fun setAllCars(list : MutableList<Car>) {
+    fun setAllCars(list : List<Car>) {
         CarList = list
         notifyDataSetChanged()
     }
@@ -37,7 +37,7 @@ class CarAdapter : Adapter<CarAdapter.CarViewHolder>() {
 
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
         val item = CarList[position]
-        holder.priceCar.text = item.price
+        holder.priceCar.text = item.preco
         holder.bateriaCar.text = item.bateria
         holder.potenciaCar.text = item.potencia
         holder.recargaCar.text = item.recarga

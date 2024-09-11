@@ -10,6 +10,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.devrhyan.eletriccarapp.databinding.ActivityMainBinding
 import com.devrhyan.eletriccarapp.fragments.CarFragment
 import com.devrhyan.eletriccarapp.fragments.FavoriteCarsFragment
@@ -20,7 +21,7 @@ import com.devrhyan.eletriccarapp.ui.MethodActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
-    val adapter = CarFragmentAdapter(this)
+    private val adapter = CarFragmentAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.viewCarAdapter.adapter = adapter
+        binding.viewCarAdapter.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.ivMainFragment.imageTintList = when (position) {
+                    0 -> getColorStateList(R.color.greeenApp)
+                    else -> getColorStateList(R.color.white)
+                }
+                binding.ivFavoriteFragment.imageTintList = when(position) {
+                    1 -> getColorStateList(R.color.greeenApp)
+                    else -> getColorStateList(R.color.white)
+                }
+            }
+        })
 
         binding.ivCalculate.setOnClickListener {
             startActivity(Intent(this, MethodActivity::class.java))
