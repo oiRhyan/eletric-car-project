@@ -1,12 +1,14 @@
 package com.devrhyan.eletriccarapp.fragments
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -49,8 +51,15 @@ class CarFragment : Fragment() {
             }
         }
 
+        adapter.carItemListener = { item ->
+            Toast.makeText(context, "Favoritado: ${item.preco}", Toast.LENGTH_SHORT).show()
+        }
+
         carListViewer.adapter = adapter
         carListViewer.layoutManager = LinearLayoutManager(context)
+
+
+
 
         return viewer
     }
@@ -77,5 +86,6 @@ class CarFragment : Fragment() {
             alertBuilder.show()
         }
     }
+
 
 }

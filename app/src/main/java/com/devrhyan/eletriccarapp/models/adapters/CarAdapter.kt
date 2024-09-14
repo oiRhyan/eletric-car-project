@@ -3,6 +3,7 @@ package com.devrhyan.eletriccarapp.models.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -18,11 +19,16 @@ class CarAdapter : Adapter<CarAdapter.CarViewHolder>() {
         notifyDataSetChanged()
     }
 
+    var carItemListener : (Car) -> Unit = {}
+
     inner class CarViewHolder(view : View) : ViewHolder(view) {
          val priceCar : TextView = view.findViewById(R.id.tv_preco_value)
          val bateriaCar : TextView = view.findViewById(R.id.tv_bateria_value)
          val potenciaCar : TextView = view.findViewById(R.id.tv_potencia_value)
          val recargaCar: TextView = view.findViewById(R.id.tv_recarga_value)
+        val favoriteButton : ImageView = view.findViewById(R.id.star)
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
@@ -41,6 +47,17 @@ class CarAdapter : Adapter<CarAdapter.CarViewHolder>() {
         holder.bateriaCar.text = item.bateria
         holder.potenciaCar.text = item.potencia
         holder.recargaCar.text = item.recarga
+
+        holder.favoriteButton.setOnClickListener {
+            carItemListener(item)
+            item.isFavorite = !item.isFavorite
+
+            if(item.isFavorite) {
+                holder.favoriteButton.setImageResource(R.drawable.baseline_star_24)
+            } else {
+                holder.favoriteButton.setImageResource(R.drawable.baseline_star_outline_24)
+            }
+        }
     }
 
 }

@@ -6,5 +6,6 @@ data class Car (
     val bateria : String,
     val potencia : String,
     val recarga : String,
-    val urlPhoto : String? = null
+    val urlPhoto : String? = null,
+    var isFavorite : Boolean
 )
