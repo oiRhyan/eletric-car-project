@@ -1,6 +1,7 @@
 package com.devrhyan.eletriccarapp.fragments
 
 import android.app.AlertDialog
+import android.content.ContentValues
 import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
@@ -19,6 +20,8 @@ import com.devrhyan.eletriccarapp.R
 import com.devrhyan.eletriccarapp.models.Car
 import com.devrhyan.eletriccarapp.models.adapters.CarAdapter
 import com.devrhyan.eletriccarapp.repositorie.CarList
+import com.devrhyan.eletriccarapp.repositorie.data.local.CarsContract
+import com.devrhyan.eletriccarapp.repositorie.data.local.SQLiteHelper
 import com.devrhyan.eletriccarapp.services.RetrofitService
 import kotlinx.coroutines.launch
 import kotlin.system.exitProcess
@@ -85,6 +88,21 @@ class CarFragment : Fragment() {
             alertBuilder.setPositiveButton("OK") { dialog, _ -> exitProcess(0) }
             alertBuilder.show()
         }
+    }
+
+    fun saveOnDB(car : Car) {
+        val dbHelper = SQLiteHelper(requireContext())
+        val db = dbHelper.writableDatabase
+
+        val values = ContentValues().apply {
+            put(CarsContract.CarEntry.COLUMN_NAME_PRICE, car.preco)
+            put(CarsContract.CarEntry.COLUMN_NAME_BATTERY, car.bateria)
+            put(CarsContract.CarEntry.COLUMN_NAME_POTENCY, car.potencia)
+            put(CarsContract.CarEntry.COLUMN_NAME_RECHARGE, car.recarga)
+            put(CarsContract.CarEntry.COLUMN_NAME_URLPHOTO, car.urlPhoto)
+        }
+
+        val newRegiter = db.insert(CarsContract.CarEntry.TABLE_NAME, null, values)
     }
 
 
