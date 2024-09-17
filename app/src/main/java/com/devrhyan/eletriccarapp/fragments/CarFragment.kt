@@ -20,6 +20,7 @@ import com.devrhyan.eletriccarapp.R
 import com.devrhyan.eletriccarapp.models.Car
 import com.devrhyan.eletriccarapp.models.adapters.CarAdapter
 import com.devrhyan.eletriccarapp.repositorie.CarList
+import com.devrhyan.eletriccarapp.repositorie.CarRepository
 import com.devrhyan.eletriccarapp.repositorie.data.local.CarsContract
 import com.devrhyan.eletriccarapp.repositorie.data.local.SQLiteHelper
 import com.devrhyan.eletriccarapp.services.RetrofitService
@@ -55,14 +56,21 @@ class CarFragment : Fragment() {
         }
 
         adapter.carItemListener = { item ->
-            Toast.makeText(context, "Favoritado: ${item.preco}", Toast.LENGTH_SHORT).show()
+            val carRepository = CarRepository(requireContext())
+
+            if (carRepository.findCarOnDb(item.id) == null) {
+                carRepository.saveIfNotExists(item)
+            } else {
+                carRepository.deleteCar(item)
+            }
+
+
+            val fragment = parentFragmentManager.findFragmentByTag("FavoriteCarsFragment") as? FavoriteCarsFragment
+            fragment?.updateCarList()
         }
 
         carListViewer.adapter = adapter
         carListViewer.layoutManager = LinearLayoutManager(context)
-
-
-
 
         return viewer
     }
@@ -89,21 +97,4 @@ class CarFragment : Fragment() {
             alertBuilder.show()
         }
     }
-
-    fun saveOnDB(car : Car) {
-        val dbHelper = SQLiteHelper(requireContext())
-        val db = dbHelper.writableDatabase
-
-        val values = ContentValues().apply {
-            put(CarsContract.CarEntry.COLUMN_NAME_PRICE, car.preco)
-            put(CarsContract.CarEntry.COLUMN_NAME_BATTERY, car.bateria)
-            put(CarsContract.CarEntry.COLUMN_NAME_POTENCY, car.potencia)
-            put(CarsContract.CarEntry.COLUMN_NAME_RECHARGE, car.recarga)
-            put(CarsContract.CarEntry.COLUMN_NAME_URLPHOTO, car.urlPhoto)
-        }
-
-        val newRegiter = db.insert(CarsContract.CarEntry.TABLE_NAME, null, values)
-    }
-
-
 }
